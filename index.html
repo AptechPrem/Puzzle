@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .Master {
+        background-image: url("/BG.jpg");
+        width: 730px;
+        height: 650px;
+        background-size: 730px 650px;
+      }
+      .Box {
+        width: 230px;
+        height: 200px;
+        vertical-align: top;
+        background-color: rgba(224, 255, 255, 0.4);
+        display: inline-block;
+        margin: 5px;
+      }
+      img {
+        width: 230px;
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="Master">
+      <div class="Box" ondragover="allow(event)" ondrop="place(event)"></div>
+      <div class="Box" ondragover="allow(event)" ondrop="place(event)"></div>
+      <div class="Box" ondragover="allow(event)" ondrop="place(event)"></div>
+      <div class="Box" ondragover="allow(event)" ondrop="place(event)"></div>
+      <div class="Box" ondragover="allow(event)" ondrop="place(event)"></div>
+      <div class="Box" ondragover="allow(event)" ondrop="place(event)"></div>
+      <div class="Box" ondragover="allow(event)" ondrop="place(event)"></div>
+      <div class="Box" ondragover="allow(event)" ondrop="place(event)"></div>
+      <div class="Box" ondragover="allow(event)" ondrop="place(event)"></div>
+    </div>
+    <img src="/Image/pic1.jpg" ondragstart="copy(event,0)" class="pic" alt="" />
+    <img src="/Image/pic2.jpg" ondragstart="copy(event,1)" class="pic" alt="" />
+    <img src="/Image/pic3.jpg" ondragstart="copy(event,2)" class="pic" alt="" />
+    <img src="/Image/pic4.jpg" ondragstart="copy(event,3)" class="pic" alt="" />
+    <img src="/Image/pic5.jpg" ondragstart="copy(event,4)" class="pic" alt="" />
+    <img src="/Image/pic6.jpg" ondragstart="copy(event,5)" class="pic" alt="" />
+    <img src="/Image/pic7.jpg" ondragstart="copy(event,6)" class="pic" alt="" />
+    <img src="/Image/pic8.jpg" ondragstart="copy(event,7)" class="pic" alt="" />
+    <img src="/Image/pic9.jpg" ondragstart="copy(event,8)" class="pic" alt="" />
+    <script>
+        
+      let img = document.querySelectorAll("img");
+      let box = document.querySelectorAll(".Box");
+      function allow(ev) {
+        ev.preventDefault();
+      }
+      function copy(ev,pos) {
+       
+        ev.dataTransfer.setData("txt", ev.target.className);
+      }
+      function place(ev) {
+        let image = ev.dataTransfer.getData("txt");
+        
+        ev.target.appendChild(document.getElementsByClassName(image[0]));
+      }
+    </script>
+  </body>
+</html>
